@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Project 3: Simulating API Interaction in Your Personal Dashboard</title>
+  <!--
+    INFO 350 Project 3: Simulating API Interaction in Your Personal Dashboard
+    By Esaias Adhanom
+    This is my dashboard for Project 3. Now featuring simulated API interactions and enhanced dashboard features.
+  -->
+  <style>
+    /* General body styling */
+    body {
+      background-color: #beecfc;
+      padding: 20px;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Dashboard layout container */
+    .dashboard {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* Profile card styling */
+    .profile-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(44,90,160,0.08);
+      padding: 24px 32px;
+      min-width: 280px;
+      max-width: 340px;
+      flex: 1 1 300px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .profile-card img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 16px;
+    }
+    .profile-info {
+      text-align: center;
+      margin-bottom: 12px;
+    }
+    .profile-info h2 {
+      color: #2c5aa0;
+      margin: 0 0 8px 0;
+      font-size: 22px;
+    }
+    .profile-info p {
+      margin: 4px 0;
+      color: #333;
+      font-size: 15px;
+    }
+    .profile-color {
+      margin-top: 10px;
+      font-size: 15px;
+      color: #2c5aa0;
+    }
+
+    /* User input form styling */
+    .user-form {
+      background: #f7fafc;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(44,90,160,0.06);
+      padding: 24px 32px;
+      min-width: 280px;
+      max-width: 340px;
+      flex: 1 1 300px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    /* label and input side by side */
+    .form-row {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+      gap: 10px;
+    }
+    .form-row label {
+      font-size: 15px;
+      color: #2c5aa0;
+      min-width: 100px;
+      margin-bottom: 0;
+      text-align: right;
+    }
+    .form-row input {
+      flex: 1;
+      padding: 7px 10px;
+      border: 1px solid #b3c6e0;
+      border-radius: 6px;
+      font-size: 15px;
+    }
+    .user-form button {
+      margin-top: 10px;
+      padding: 8px 0;
+      background: #2c5aa0;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .user-form button:hover {
+      background: #1d3e6e;
+    }
+
+    /* Responsive design for small screens */
+    @media (max-width: 700px) {
+      .dashboard {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    /* Hobbies styling */
+    .hobbies-section {
+      margin-top: 30px;
+      text-align: center;
+    }
+    .hobbies-section h3 {
+      color: #2c5aa0;
+      margin-bottom: 10px;
+    }
+    .hobbies-section ul {
+      list-style: disc inside;
+      padding: 0;
+      margin: 0 auto;
+      display: inline-block;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <!-- Main heading -->
+  <h1>Esaias Adhanom's Dashboard</h1>
+
+  <!-- Dashboard layout, profile card and user input form side by side -->
+  <div class="dashboard">
+    <!-- Profile Card Section -->
+    <section class="profile-card" id="profileCard">
+      <!-- Profile image -->
+      <img src="https://www.sportsdirect.com/images/products/73133869_l.jpg" alt="Profile picture">
+      <!-- Profile info dynamically updated by JavaScript -->
+      <div class="profile-info">
+        <h2 id="displayName">Your Name</h2>
+        <p id="displayEmail">your@email.com</p>
+        <div class="profile-color" id="displayColor">Favorite Color: <span style="color:#2c5aa0">None</span></div>
+      </div>
+    </section>
+
+    <!-- User Input Form Section -->
+    <section class="user-form">
+      <form id="userForm">
+        <!-- Name -->
+        <div class="form-row">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" placeholder="Enter your name" required>
+        </div>
+        <!-- Email -->
+        <div class="form-row">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email" required>
+        </div>
+        <!-- Favorite Color -->
+        <div class="form-row">
+          <label for="color">Favorite Color:</label>
+          <input type="text" id="color" name="color" placeholder="e.g. Blue" required>
+        </div>
+        <button type="submit">Update Profile</button>
+      </form>
+    </section>
+  </div>
+
+  <!-- Hobbies section -->
+  <div class="hobbies-section">
+    <h3>My Top 3 Hobbies</h3>
+    <ul>
+      <li>Video Games</li>
+      <li>Basketball</li>
+      <li>Lego Building</li>
+    </ul>
+  </div>
+
+  <!-- Activity Log section for Project 3 -->
+  <div class="hobbies-section" style="margin-top: 40px;">
+    <h3>Activity Log</h3>
+    <p style="max-width: 700px; margin: 0 auto 14px;">
+      Add activities below. You can sort them A–Z or filter by type.
+    </p>
+
+    <form id="activityForm" class="user-form" style="max-width: 520px; margin: 0 auto;">
+      <div class="form-row">
+        <label for="activityText">Activity:</label>
+        <input type="text" id="activityText" placeholder="ex: Studied INFO 350" required>
+      </div>
+
+      <div class="form-row">
+        <label for="activityType">Type:</label>
+        <input type="text" id="activityType" placeholder="ex: school, gym, work" required>
+      </div>
+
+      <button type="submit">Add Activity</button>
+      <p id="activityMsg" style="margin: 10px 0 0; font-weight: bold;"></p>
+    </form>
+
+    <div style="margin-top: 14px;">
+      <button id="sortBtn" type="button" style="padding: 8px 12px; background:#2c5aa0; color:#fff; border:none; border-radius:6px; cursor:pointer;">
+        Sort A–Z
+      </button>
+      <button id="filterSchoolBtn" type="button" style="padding: 8px 12px; background:#2c5aa0; color:#fff; border:none; border-radius:6px; cursor:pointer; margin-left: 8px;">
+        Filter: school
+      </button>
+      <button id="clearFilterBtn" type="button" style="padding: 8px 12px; background:#2c5aa0; color:#fff; border:none; border-radius:6px; cursor:pointer; margin-left: 8px;">
+        Clear Filter
+      </button>
+    </div>
+
+    <ul id="activityList" style="margin-top: 14px;"></ul>
+  </div>
+
+  <!-- Favorite website and email links -->
+  <div style="text-align: center; margin-top: 30px;">
+    <a href="https://www.youtube.com" target="_blank">Favorite website</a> |
+    <a href="mailto:esaias.adhanom@gmail.com">Email me</a>
+  </div>
+
+  <!-- API Data Section (Project 3: Simulating API Interaction) -->
+<div class="hobbies-section" style="margin-top: 40px;">
+  <h3>API Data</h3>
+
+  <button id="loadUsersBtn">Load Users</button>
+  <button id="loadPostsBtn">Load Posts</button>
+  <button id="clearDataBtn">Clear Data</button>
+
+  <p id="loadingMsg" style="margin-top:10px;"></p>
+
+  <div id="apiData" style="margin-top: 20px;"></div>
+</div>
+
+  <!-- Link to JavaScript file -->
+  <script src="dashboard_project.js"></script>
+</body>
+</html>

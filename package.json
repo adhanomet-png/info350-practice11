@@ -1,0 +1,12 @@
+{
+  "name": "info350-practice11-dashboard",
+  "version": "1.0.0",
+  "description": "INFO 350 Practice 11 deployed dashboard project",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
